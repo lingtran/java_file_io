@@ -1,26 +1,24 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.io.File;
 import java.util.ArrayList;
 
-import static java.nio.file.Paths.get;
-
-
 public class FileHandler {
-    public static void main(String[] args) {
+    Processor processor;
 
+    public static FileHandler main(String filepath) throws IOException {
+        FileHandler fileHandler = new FileHandler();
+        fileHandler.readFile(filepath);
+        return fileHandler;
     }
 
     public FileHandler() {
-
+        processor = new Processor();
     }
 
-    public String readFile(String filepath) throws FileNotFoundException, URISyntaxException {
+    public String readFile(String filepath) {
         String line = null;
-        ArrayList<String> readLines = new ArrayList<String>();
 
         try {
             FileReader inFile  =  new FileReader(new File(filepath).getAbsoluteFile());
@@ -28,16 +26,27 @@ public class FileHandler {
 
             BufferedReader buffer = new BufferedReader(inFile);
 
-            while((line = buffer.readLine()) != null) {
-                readLines.add(line);
-                System.out.println("Read line: " + line);
-            }
+            convertLines(line, buffer, processor);
 
             buffer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         System.out.println("Successfully read file");
-        return readLines.toString();
+        return  "Successfully read file";
+    }
+
+    private static void convertLines(String line, BufferedReader buffer, Processor processor) throws IOException {
+        // for debugging purposes
+        ArrayList<String> readLines = new ArrayList<String>();
+
+        while((line = buffer.readLine()) != null) {
+            processor.addItemToBasket(Parser.parseItem(line));
+
+            // for debugging
+            readLines.add(line);
+            System.out.println("Read line: " + line);
+        }
     }
 }
