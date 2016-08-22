@@ -1,29 +1,27 @@
-
 public class Item {
-    private static final String[] BOOKS			   = { "book" };
-    private static final String[] FOOD 		  	   = { "chocolate" };
-    private static final String[] MEDICAL_PRODUCTS = { "pills" };
-
+    private static final String[] BOOKS = {"book"};
+    private static final String[] FOOD = {"chocolate"};
+    private static final String[] MEDICAL_PRODUCTS = {"pills"};
+    public Boolean exemptionStatus = false;
+    public Boolean importStatus = false;
     Integer quantity;
     String name = null;
     Double price;
     Double salesTax;
     Double total;
-    public Boolean exemptionStatus = false;
-    public Boolean importStatus	   = false;
+
+    public Item(String q, String n, String p) {
+        quantity = convertToInteger(q);
+        name = n;
+        price = convertToDouble(p);
+        salesTax = 0.0;
+        total = price;
+        exemptionStatus = determineIfExempt();
+        importStatus = determineIfImported();
+    }
 
     public static void main(String[] args) {
 
-    }
-
-    public Item(String q, String n, String p){
-        quantity 		= convertToInteger(q);
-        name 	 		= n;
-        price 	 		= convertToDouble(p);
-        salesTax		= 0.0;
-        total			= price;
-        exemptionStatus = determineIfExempt();
-        importStatus 	= determineIfImported();
     }
 
     public static Double convertToDouble(String p) throws NumberFormatException {
@@ -42,15 +40,15 @@ public class Item {
     }
 
     public boolean determineIfImported() {
-        if( name.toLowerCase().contains("imported") ) {
+        if (name.toLowerCase().contains("imported")) {
             importStatus = true;
         }
         return importStatus;
     }
 
     private void scanForKeywordMatch(String[] collection) {
-        for(String element: collection) {
-            if( name.toLowerCase().contains(element) ) {
+        for (String element : collection) {
+            if (name.toLowerCase().contains(element)) {
                 exemptionStatus = true;
                 break;
             }

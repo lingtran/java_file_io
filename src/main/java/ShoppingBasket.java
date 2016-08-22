@@ -5,14 +5,14 @@ public class ShoppingBasket {
     Double total;
     ArrayList<Item> basketOfItems;
 
-    public static void main(String[] arg) {
-
+    public ShoppingBasket() {
+        salesTaxes = 0.0;
+        total = 0.0;
+        basketOfItems = new ArrayList<Item>();
     }
 
-    public ShoppingBasket() {
-        salesTaxes	  = 0.0;
-        total		  = 0.0;
-        basketOfItems = new ArrayList<Item>();
+    public static void main(String[] arg) {
+
     }
 
 }

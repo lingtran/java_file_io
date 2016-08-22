@@ -7,7 +7,7 @@ public class Processor {
 
     public Processor() {
         shoppingBasket = new ShoppingBasket();
-        items 		   = shoppingBasket.basketOfItems;
+        items = shoppingBasket.basketOfItems;
     }
 
     public ArrayList<Item> addItemToBasket(Item item) {

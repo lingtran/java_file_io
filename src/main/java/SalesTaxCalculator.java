@@ -1,13 +1,13 @@
 public class SalesTaxCalculator {
-    private static final Double BASICSALESTAX	= 0.1;
-    private static final Double IMPORTDUTY		= 0.05;
+    private static final Double BASICSALESTAX = 0.1;
+    private static final Double IMPORTDUTY = 0.05;
 
     public static void main(ShoppingBasket shoppingBasket) {
         calculate(shoppingBasket);
     }
 
     public static void calculate(ShoppingBasket shoppingBasket) {
-        for(Item item: shoppingBasket.basketOfItems) {
+        for (Item item : shoppingBasket.basketOfItems) {
             calculateItemTaxesAndTotal(item);
             calculateBasketTaxesAndTotal(shoppingBasket, item.salesTax, item.total);
         }
@@ -38,20 +38,20 @@ public class SalesTaxCalculator {
     }
 
     public static Double determineItemBasicSalesTax(Item item) {
-        if( !item.exemptionStatus ) {
+        if (!item.exemptionStatus) {
             item.salesTax += (BASICSALESTAX * item.price);
         }
         return item.salesTax = roundUpSalesTax(item.salesTax);
     }
 
     public static Double determineItemImportDuty(Item item) {
-        if( item.importStatus ) {
+        if (item.importStatus) {
             item.salesTax += (IMPORTDUTY * item.price);
         }
         return item.salesTax = roundUpSalesTax(item.salesTax);
     }
 
     public static Double roundUpSalesTax(Double determinedSalesTax) {
-        return Math.ceil(determinedSalesTax * 20)/20.0;
+        return Math.ceil(determinedSalesTax * 20) / 20.0;
     }
 }

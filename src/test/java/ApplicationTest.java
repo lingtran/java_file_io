@@ -9,7 +9,7 @@ public class ApplicationTest {
 
     @Test
     public void testMainWithInputOneData() throws IOException {
-        String inputOne = "src/main/resources/input_one.txt";
+        String inputOne = "src/test/resources/input_one.txt";
         String[] argsOne = {inputOne};
 
         Application.main(argsOne);
@@ -19,7 +19,7 @@ public class ApplicationTest {
 
     @Test
     public void testMainWithInputTwoData() throws IOException {
-        String inputTwo = "src/main/resources/input_two.txt";
+        String inputTwo = "src/test/resources/input_two.txt";
         String[] argsTwo = {inputTwo};
 
         Application.main(argsTwo);
@@ -29,7 +29,7 @@ public class ApplicationTest {
 
     @Test
     public void testMainWithInputThreeData() throws IOException {
-        String inputThree = "src/main/resources/input_three.txt";
+        String inputThree = "src/test/resources/input_three.txt";
         String[] argsThree = {inputThree};
 
         Application.main(argsThree);
