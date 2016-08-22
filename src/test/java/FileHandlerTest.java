@@ -12,7 +12,7 @@ public class FileHandlerTest {
 
     @Test
     public void testmain() throws IOException {
-        String filename  	  = "src/main/resources/input_three";
+        String filename  	  = "src/main/resources/input_three.txt";
         FileHandler test 	  = FileHandler.main(filename);
         Processor processor   = test.processor;
         Item itemAtIndexOfOne = processor.items.get(1);
@@ -27,7 +27,7 @@ public class FileHandlerTest {
 
     @Test
     public void testFileHandlerConstructor() throws FileNotFoundException {
-        String filename 		= "src/main/resources/input_one";
+        String filename 		= "src/main/resources/input_one.txt";
         FileHandler test 		= new FileHandler();
         Processor testProcessor = test.processor;
         Processor processor 	= new Processor();
@@ -37,7 +37,7 @@ public class FileHandlerTest {
 
     @Test
     public void testCanReadFile() throws FileNotFoundException {
-        String filename  = "src/main/resources/input_one";
+        String filename  = "src/main/resources/input_one.txt";
         FileHandler test = new FileHandler();
 
         String testResult = test.readFile(filename);

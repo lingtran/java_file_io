@@ -45,12 +45,12 @@ public class ProcessorTest {
 
         assertEquals( 2, test.items.size());
         assertTrue( test.items.containsAll(testItems) );
-        assertFalse( test.items.get(1).name == itemOne.name );
+        assertFalse(test.items.get(1).name.equals(itemOne.name));
         assertTrue( test.shoppingBasket.basketOfItems == test.items );
     }
 
     @Test
-    public void testCallSalesTaxCalculatorr() {
+    public void testCallSalesTaxCalculator() {
         Processor test					 = new Processor();
         Item itemOne 				     = new Item( "1", "imported box of chocolates", "10.00" );
         Item itemTwo   					 = new Item( "1", "music CD", "14.99" );
