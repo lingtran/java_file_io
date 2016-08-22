@@ -14,8 +14,6 @@ public class Printer {
     private FileWriter writeReceipt;
     private BufferedWriter bufferedWriter;
 
-    private String successFileWriteMessage = "Successfully printed receipt";
-
     private static String getDateTime() {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd_hh:mm:ss");
         return df.format(new Date());
@@ -38,7 +36,9 @@ public class Printer {
             System.out.println("Error writing to file '" + receiptFilePath + "'" );
             e.printStackTrace();
         }
-        return successFileWriteMessage;
+
+        System.out.println("Successfully printed receipt. Check the 'sales_taxes_java/receipts' directory for the most recent output.");
+        return "Successfully printed receipt";
     }
 
     private void setUp() throws IOException {
