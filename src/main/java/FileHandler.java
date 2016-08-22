@@ -1,8 +1,7 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.File;
-import java.util.ArrayList;
 
 public class FileHandler {
     Processor processor;
@@ -18,15 +17,11 @@ public class FileHandler {
     }
 
     public String readFile(String filepath) {
-        String line = null;
-
         try {
-            FileReader inFile  =  new FileReader(new File(filepath).getAbsoluteFile());
-            System.out.println(inFile);
-
+            FileReader inFile     =  new FileReader(new File(filepath).getAbsoluteFile());
             BufferedReader buffer = new BufferedReader(inFile);
 
-            convertLines(line, buffer, processor);
+            convertLines(buffer, processor);
 
             buffer.close();
         } catch (IOException e) {
@@ -37,16 +32,10 @@ public class FileHandler {
         return  "Successfully read file";
     }
 
-    private static void convertLines(String line, BufferedReader buffer, Processor processor) throws IOException {
-        // for debugging purposes
-        ArrayList<String> readLines = new ArrayList<String>();
-
+    private static void convertLines(BufferedReader buffer, Processor processor) throws IOException {
+        String line;
         while((line = buffer.readLine()) != null) {
             processor.addItemToBasket(Parser.parseItem(line));
-
-            // for debugging
-            readLines.add(line);
-            System.out.println("Read line: " + line);
         }
     }
 }
