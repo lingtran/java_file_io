@@ -1,7 +1,7 @@
 Summary of Command Line Application
 
 Compile && Run Application
-*Enter commands: `javac src/main/java/*.java && java -cp src/main/java Application [text file path]`
+* Enter commands: `javac src/main/java/*.java && java -cp src/main/java Application [text file path]`
 
 * Example: `javac src/main/java/*.java && java -cp src/main/java Application src/test/resources/input_one.txt`
 
