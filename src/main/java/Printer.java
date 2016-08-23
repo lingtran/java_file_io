@@ -35,14 +35,15 @@ public class Printer {
             System.out.println("Error writing to file '" + receiptFilePath + "'");
             e.printStackTrace();
         }
+
         return "Successfully printed receipt";
     }
 
     private void setUp() throws IOException {
         receiptFilePath = "receipts/receipt_" + getDateTime() + ".txt";
-        receipt = new File(receiptFilePath);
-        writeReceipt = new FileWriter(receipt.getAbsoluteFile(), true);
-        bufferedWriter = new BufferedWriter(writeReceipt);
+        receipt         = new File(receiptFilePath);
+        writeReceipt    = new FileWriter(receipt.getAbsoluteFile(), true);
+        bufferedWriter  = new BufferedWriter(writeReceipt);
     }
 
     private void closeOut() throws IOException {
@@ -73,8 +74,8 @@ public class Printer {
     }
 
     private void writeLines() throws IOException {
-        for (int i = 0; i < content.size(); i++) {
-            bufferedWriter.write(content.get(i));
+        for (String line : content) {
+            bufferedWriter.write(line);
             bufferedWriter.newLine();
         }
     }

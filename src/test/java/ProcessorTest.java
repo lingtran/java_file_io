@@ -14,7 +14,7 @@ public class ProcessorTest {
 
     @Test
     public void testProcessorConstructor() {
-        Processor test = new Processor();
+        Processor test                = new Processor();
         ShoppingBasket testBasket 	  = test.shoppingBasket;
         ArrayList<Item> testItems 	  = test.items;
         ShoppingBasket shoppingBasket = new ShoppingBasket();
@@ -45,7 +45,7 @@ public class ProcessorTest {
 
         assertEquals( 2, test.items.size());
         assertTrue( test.items.containsAll(testItems) );
-        assertFalse(test.items.get(1).name.equals(itemOne.name));
+        assertFalse( test.items.get(1).name.equals(itemOne.name) );
         assertTrue( test.shoppingBasket.basketOfItems == test.items );
     }
 

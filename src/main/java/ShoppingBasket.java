@@ -6,8 +6,8 @@ public class ShoppingBasket {
     ArrayList<Item> basketOfItems;
 
     public ShoppingBasket() {
-        salesTaxes = 0.0;
-        total = 0.0;
+        salesTaxes    = 0.0;
+        total         = 0.0;
         basketOfItems = new ArrayList<Item>();
     }
 

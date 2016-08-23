@@ -25,11 +25,10 @@ public class FileHandler {
 
     public String readFile(String filepath) {
         try {
-            FileReader inFile = new FileReader(new File(filepath).getAbsoluteFile());
+            FileReader inFile     = new FileReader(new File(filepath).getAbsoluteFile());
             BufferedReader buffer = new BufferedReader(inFile);
 
             convertLines(buffer, processor);
-
             buffer.close();
         } catch (IOException e) {
             e.printStackTrace();

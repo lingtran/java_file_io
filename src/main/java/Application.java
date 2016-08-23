@@ -10,7 +10,7 @@ public class Application {
         getProcessor();
         processorStartsCalculator();
         processorPrintsReceipt();
-        System.out.println("Successfully printed receipt! Check the 'sales_taxes_java/receipts' directory for the most recent output.");
+        System.out.println("Successfully printed receipt to 'sales_taxes_java/receipts/" + receipt + "'.");
 
     }
 

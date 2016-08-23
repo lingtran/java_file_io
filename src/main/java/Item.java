@@ -2,8 +2,10 @@ public class Item {
     private static final String[] BOOKS = {"book"};
     private static final String[] FOOD = {"chocolate"};
     private static final String[] MEDICAL_PRODUCTS = {"pills"};
+
     public Boolean exemptionStatus = false;
-    public Boolean importStatus = false;
+    public Boolean importStatus    = false;
+
     Integer quantity;
     String name = null;
     Double price;
@@ -11,13 +13,13 @@ public class Item {
     Double total;
 
     public Item(String q, String n, String p) {
-        quantity = convertToInteger(q);
-        name = n;
-        price = convertToDouble(p);
-        salesTax = 0.0;
-        total = price;
+        quantity        = convertToInteger(q);
+        name            = n;
+        price           = convertToDouble(p);
+        salesTax        = 0.0;
+        total           = price;
         exemptionStatus = determineIfExempt();
-        importStatus = determineIfImported();
+        importStatus    = determineIfImported();
     }
 
     public static void main(String[] args) {

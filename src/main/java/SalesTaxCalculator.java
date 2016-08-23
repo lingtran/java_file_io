@@ -1,6 +1,6 @@
 public class SalesTaxCalculator {
     private static final Double BASICSALESTAX = 0.1;
-    private static final Double IMPORTDUTY = 0.05;
+    private static final Double IMPORTDUTY    = 0.05;
 
     public static void main(ShoppingBasket shoppingBasket) {
         calculate(shoppingBasket);

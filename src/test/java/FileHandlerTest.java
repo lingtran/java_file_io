@@ -22,7 +22,7 @@ public class FileHandlerTest {
         assertEquals( "bottle of perfume", itemAtIndexOfOne.name );
         assertEquals( quantity, itemAtIndexOfOne.quantity );
         assertTrue( 18.99 == itemAtIndexOfOne.price );
-        assertFalse( processor.items.get(0) == processor.items.get(3));
+        assertFalse( processor.items.get(0) == processor.items.get(3) );
     }
 
     @Test
@@ -37,12 +37,10 @@ public class FileHandlerTest {
 
     @Test
     public void testCanReadFile() throws FileNotFoundException {
-        String filename  = "src/test/resources/input_one.txt";
-        FileHandler test = new FileHandler();
-
+        String filename   = "src/test/resources/input_one.txt";
+        FileHandler test  = new FileHandler();
         String testResult = test.readFile(filename);
-
-        String result 	 = "Successfully read file";
+        String result     = "Successfully read file";
 
         assertEquals( result, testResult );
 
