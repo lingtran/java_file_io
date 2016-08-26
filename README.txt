@@ -49,6 +49,6 @@ DESIGN
 TOOLING
 The implementation of this program utilized the following:
 	* JDK 1.8
-	* Eclipse text editor
+	* IntelliJ IDEA editor
 	* Apache Maven build tool
 	* JUnit testing framework
