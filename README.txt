@@ -19,7 +19,6 @@ RUN TESTS
 * Enter command: 
 	$ mvn clean test
 
-
 ASSUMPTIONS
 * Each input file requires an individual output file
 
