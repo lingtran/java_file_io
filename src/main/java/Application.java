@@ -7,7 +7,7 @@ public class Application {
 
     public static void main(String[] args) throws IOException {
         initiateFileHandler(args[0]);
-        getProcessor();
+        setProcessor();
         processorStartsCalculator();
         processorPrintsReceipt();
         System.out.println("Successfully printed receipt to 'sales_taxes_java/receipts/" + receipt + "'.");
@@ -19,18 +19,21 @@ public class Application {
         System.out.println("Hooray! Successfully read file.");
     }
 
-    private static void getProcessor() {
+    private static void setProcessor() {
         processor = fileHandler.processor;
     }
 
     private static void processorStartsCalculator() {
         System.out.println("Your shopping basket is being processed.");
-        processor.callSalesTaxCalculator();
+        getProcessor().callSalesTaxCalculator();
     }
 
     private static String processorPrintsReceipt() throws IOException {
         System.out.println("Receipt is printing...");
-        return receipt = processor.getReceipt();
+        return receipt = getProcessor().getReceipt();
     }
 
+    private static Processor getProcessor() {
+        return processor;
+    }
 }
