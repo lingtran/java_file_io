@@ -44,7 +44,7 @@ DESIGN
 
 	* The processor also calls on the printer to format and print the receipt
 
-	* Each new receipt will be found in the 'sales_taxes_java/receipts' directory
+	* Each new receipt will be found in the 'receipts' directory
 
 TOOLING
 The implementation of this program utilized the following:
