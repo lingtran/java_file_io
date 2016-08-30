@@ -2,10 +2,6 @@ public class SalesTaxCalculator {
     private static final Double BASICSALESTAX = 0.1;
     private static final Double IMPORTDUTY    = 0.05;
 
-    public static void main(ShoppingBasket shoppingBasket) {
-        calculate(shoppingBasket);
-    }
-
     public static void calculate(ShoppingBasket shoppingBasket) {
         for (Item item : shoppingBasket.basketOfItems) {
             calculateItemTaxesAndTotal(item);

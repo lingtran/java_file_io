@@ -16,7 +16,7 @@ public class Processor {
     }
 
     public void callSalesTaxCalculator() {
-        SalesTaxCalculator.main(shoppingBasket);
+        SalesTaxCalculator.calculate(shoppingBasket);
     }
 
     public String getReceipt() throws IOException {
