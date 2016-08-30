@@ -14,28 +14,16 @@ public class SalesTaxCalculator {
     }
 
     private static void calculateBasketTaxesAndTotal(ShoppingBasket shoppingBasket, Double itemSalesTax, Double itemTotal) {
-        addToBasketSalesTaxes(shoppingBasket, itemSalesTax);
-        addToBasketTotal(shoppingBasket, itemTotal);
+        shoppingBasket.salesTaxes = roundUpSalesTax(shoppingBasket.salesTaxes += itemSalesTax);
+        shoppingBasket.total += itemTotal;
     }
 
     private static void calculateItemTaxesAndTotal(Item item) {
         determineItemBasicSalesTax(item);
         determineItemImportDuty(item);
-        sumTotalFor(item);
-    }
-
-    public static Double addToBasketSalesTaxes(ShoppingBasket shoppingBasket, Double itemSalesTax) {
-        shoppingBasket.salesTaxes += itemSalesTax;
-        return shoppingBasket.salesTaxes = roundUpSalesTax(shoppingBasket.salesTaxes);
-    }
-
-    public static void addToBasketTotal(ShoppingBasket shoppingBasket, Double itemTotal) {
-        shoppingBasket.total += itemTotal;
-    }
-
-    public static void sumTotalFor(Item item) {
         item.total += item.salesTax;
     }
+
 
     public static Double determineItemBasicSalesTax(Item item) {
         if (!item.exemptionStatus) {

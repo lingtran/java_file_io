@@ -30,55 +30,6 @@ public class SalesTaxCalculatorTest {
     }
 
     @Test
-    public void testAddToBasketSalesTaxes() {
-        ShoppingBasket test = new ShoppingBasket();
-        Item itemOne	 	= new Item( "1", "imported box of chocolates", "11.25" );
-        Double salesTaxes   = 0.6;
-        Double total        = 11.85;
-
-        test.basketOfItems.add(itemOne);
-
-        SalesTaxCalculator.determineItemBasicSalesTax(itemOne);
-        SalesTaxCalculator.determineItemImportDuty(itemOne);
-        SalesTaxCalculator.sumTotalFor(itemOne);
-        SalesTaxCalculator.addToBasketSalesTaxes(test, itemOne.salesTax);
-        SalesTaxCalculator.addToBasketTotal(test, itemOne.total);
-
-        assertEquals( salesTaxes, test.salesTaxes );
-        assertEquals( total, test.total );
-    }
-
-    @Test
-    public void testAddToBasketTotal() {
-        ShoppingBasket test = new ShoppingBasket();
-        Item itemOne	 	= new Item( "1", "perfume", "10.79" );
-        Double total        = 11.889999999999999;
-
-        test.basketOfItems.add(itemOne);
-
-        SalesTaxCalculator.determineItemBasicSalesTax(itemOne);
-        SalesTaxCalculator.determineItemImportDuty(itemOne);
-        SalesTaxCalculator.sumTotalFor(itemOne);
-        SalesTaxCalculator.addToBasketTotal(test, itemOne.total);
-
-        assertEquals( total, test.total );
-    }
-
-    @Test
-    public void testSumTotalFor() {
-        Item test	 	= new Item( "1", "perfume", "10.79" );
-        Double salesTax = 1.1;
-        Double total    = 11.889999999999999;
-
-        SalesTaxCalculator.determineItemBasicSalesTax(test);
-        SalesTaxCalculator.determineItemImportDuty(test);
-        SalesTaxCalculator.sumTotalFor(test);
-
-        assertEquals( salesTax, test.salesTax );
-        assertEquals( total, test.total );
-    }
-
-    @Test
     public void testDetermineItemBasicSalesTax() {
         Item testOne 		   = new Item( "1", "perfume", "10.79" );
         Double testOneSalesTax = 1.1;
@@ -97,7 +48,6 @@ public class SalesTaxCalculatorTest {
 
         SalesTaxCalculator.determineItemBasicSalesTax(testTwo);
         assertEquals( testTwoSalesTax, testTwo.salesTax );
-
     }
 
     @Test
