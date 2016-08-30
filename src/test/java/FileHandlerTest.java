@@ -15,14 +15,14 @@ public class FileHandlerTest {
         String filename  	  = "src/test/resources/input_three.txt";
         FileHandler test 	  = FileHandler.main(filename);
         Processor processor   = test.processor;
-        Item itemAtIndexOfOne = processor.items.get(1);
+        Item itemAtIndexOfOne = processor.getShoppingBasket().getBasketOfItems().get(1);
         Integer quantity	  = 1;
 
-        assertTrue( processor.items.size() == 4 );
+        assertTrue( processor.getShoppingBasket().getBasketOfItems().size() == 4 );
         assertEquals( "bottle of perfume", itemAtIndexOfOne.name );
         assertEquals( quantity, itemAtIndexOfOne.quantity );
         assertTrue( 18.99 == itemAtIndexOfOne.price );
-        assertFalse( processor.items.get(0) == processor.items.get(3) );
+        assertFalse( processor.getShoppingBasket().getBasketOfItems().get(0) == processor.getShoppingBasket().getBasketOfItems().get(3) );
     }
 
     @Test

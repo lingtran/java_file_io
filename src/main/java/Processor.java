@@ -2,26 +2,32 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Processor {
-    ShoppingBasket shoppingBasket;
-    ArrayList<Item> items;
+    private ShoppingBasket shoppingBasket;
 
     public Processor() {
-        shoppingBasket = new ShoppingBasket();
-        items          = shoppingBasket.basketOfItems;
+        setShoppingBasket(new ShoppingBasket());
     }
 
     public ArrayList<Item> addItemToBasket(Item item) {
-        items.add(item);
-        return items;
+        getShoppingBasket().getBasketOfItems().add(item);
+        return getShoppingBasket().getBasketOfItems();
     }
 
     public void callSalesTaxCalculator() {
-        SalesTaxCalculator.calculate(shoppingBasket);
+        SalesTaxCalculator.calculate(getShoppingBasket());
     }
 
     public String getReceipt() throws IOException {
         Printer printer = new Printer();
-        printer.writeReceiptFor(shoppingBasket);
+        printer.writeReceiptFor(getShoppingBasket());
         return printer.receiptFilePath;
+    }
+
+    public ShoppingBasket getShoppingBasket() {
+        return shoppingBasket;
+    }
+
+    public void setShoppingBasket(ShoppingBasket shoppingBasket) {
+        this.shoppingBasket = shoppingBasket;
     }
 }

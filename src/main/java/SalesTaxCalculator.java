@@ -3,15 +3,18 @@ public class SalesTaxCalculator {
     private static final Double IMPORTDUTY    = 0.05;
 
     public static void calculate(ShoppingBasket shoppingBasket) {
-        for (Item item : shoppingBasket.basketOfItems) {
+        for (Item item : shoppingBasket.getBasketOfItems()) {
             calculateItemTaxesAndTotal(item);
             calculateBasketTaxesAndTotal(shoppingBasket, item.salesTax, item.total);
         }
     }
 
     private static void calculateBasketTaxesAndTotal(ShoppingBasket shoppingBasket, Double itemSalesTax, Double itemTotal) {
-        shoppingBasket.salesTaxes = roundUpSalesTax(shoppingBasket.salesTaxes += itemSalesTax);
-        shoppingBasket.total += itemTotal;
+        Double currentSalesTaxes = shoppingBasket.getSalesTaxes();
+        Double currentTotal      = shoppingBasket.getTotal();
+
+        shoppingBasket.setSalesTaxes(roundUpSalesTax(currentSalesTaxes += itemSalesTax));
+        shoppingBasket.setTotal(currentTotal += itemTotal);
     }
 
     private static void calculateItemTaxesAndTotal(Item item) {

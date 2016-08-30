@@ -17,16 +17,16 @@ public class SalesTaxCalculatorTest {
         Double basketSalesTaxes = 1.7;
         Double basketTotal		= itemOneTotal + itemTwoTotal;
 
-        test.basketOfItems.add(itemOne);
-        test.basketOfItems.add(itemTwo);
+        test.getBasketOfItems().add(itemOne);
+        test.getBasketOfItems().add(itemTwo);
         SalesTaxCalculator.calculate(test);
 
         assertEquals( itemOneSalesTax, itemOne.salesTax );
         assertEquals(  itemOneTotal, itemOne.total );
         assertEquals (itemTwoSalesTax, itemTwo.salesTax );
         assertEquals( itemTwoTotal, itemTwo.total );
-        assertEquals( basketSalesTaxes, test.salesTaxes );
-        assertEquals( basketTotal, test.total );
+        assertEquals( basketSalesTaxes, test.getSalesTaxes() );
+        assertEquals( basketTotal, test.getTotal() );
     }
 
     @Test
