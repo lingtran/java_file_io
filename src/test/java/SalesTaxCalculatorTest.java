@@ -21,10 +21,10 @@ public class SalesTaxCalculatorTest {
         test.getBasketOfItems().add(itemTwo);
         SalesTaxCalculator.calculate(test);
 
-        assertEquals( itemOneSalesTax, itemOne.salesTax );
-        assertEquals(  itemOneTotal, itemOne.total );
-        assertEquals (itemTwoSalesTax, itemTwo.salesTax );
-        assertEquals( itemTwoTotal, itemTwo.total );
+        assertEquals( itemOneSalesTax, itemOne.getSalesTax());
+        assertEquals(  itemOneTotal, itemOne.getTotal());
+        assertEquals (itemTwoSalesTax, itemTwo.getSalesTax());
+        assertEquals( itemTwoTotal, itemTwo.getTotal());
         assertEquals( basketSalesTaxes, test.getSalesTaxes() );
         assertEquals( basketTotal, test.getTotal() );
     }
@@ -37,17 +37,17 @@ public class SalesTaxCalculatorTest {
         testOne.determineIfExempt();
         SalesTaxCalculator.determineItemBasicSalesTax(testOne);
 
-        assertFalse( testOne.exemptionStatus );
-        assertEquals( testOneSalesTax, testOne.salesTax );
+        assertFalse( testOne.isExemptStatus() );
+        assertEquals( testOneSalesTax, testOne.getSalesTax());
 
         Item testTwo		   = new Item( "1", "chocolate", "10.00" );
         Double testTwoSalesTax = 0.00;
 
         testTwo.determineIfExempt();
-        assertTrue(  testTwo.exemptionStatus );
+        assertTrue(  testTwo.isExemptStatus() );
 
         SalesTaxCalculator.determineItemBasicSalesTax(testTwo);
-        assertEquals( testTwoSalesTax, testTwo.salesTax );
+        assertEquals( testTwoSalesTax, testTwo.getSalesTax());
     }
 
     @Test
@@ -60,11 +60,11 @@ public class SalesTaxCalculatorTest {
         SalesTaxCalculator.determineItemBasicSalesTax(testOne);
         SalesTaxCalculator.determineItemImportDuty(testOne);
 
-        assertTrue( testOne.exemptionStatus );
-        assertFalse( testOne.importStatus );
-        assertEquals( testOneBasicSalesTax, testOne.salesTax );
-        assertEquals( testOneImportDuty, testOne.salesTax );
-        assertEquals( testOneSalesTax, testOne.salesTax );
+        assertTrue( testOne.isExemptStatus() );
+        assertFalse( testOne.isImportStatus() );
+        assertEquals( testOneBasicSalesTax, testOne.getSalesTax());
+        assertEquals( testOneImportDuty, testOne.getSalesTax());
+        assertEquals( testOneSalesTax, testOne.getSalesTax());
 
         Item testTwo				= new Item( "1", "imported bottle of perfume", "18.99" );
         Double testTwoSalesTax	    = 2.85;
@@ -72,9 +72,9 @@ public class SalesTaxCalculatorTest {
         SalesTaxCalculator.determineItemBasicSalesTax(testTwo);
         SalesTaxCalculator.determineItemImportDuty(testTwo);
 
-        assertFalse( testTwo.exemptionStatus );
-        assertTrue( testTwo.importStatus );
-        assertEquals( testTwoSalesTax, testTwo.salesTax );
+        assertFalse( testTwo.isExemptStatus() );
+        assertTrue( testTwo.isImportStatus() );
+        assertEquals( testTwoSalesTax, testTwo.getSalesTax());
     }
 
     @Test
@@ -100,7 +100,7 @@ public class SalesTaxCalculatorTest {
         SalesTaxCalculator.determineItemBasicSalesTax(importedPerfume);
         SalesTaxCalculator.determineItemImportDuty(importedPerfume);
 
-        assertEquals( roundedChocoSalesTax, importedChoco.salesTax );
-        assertEquals( roundedPerfumeSalesTax, importedPerfume.salesTax );
+        assertEquals( roundedChocoSalesTax, importedChoco.getSalesTax());
+        assertEquals( roundedPerfumeSalesTax, importedPerfume.getSalesTax());
     }
 }

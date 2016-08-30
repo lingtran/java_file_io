@@ -19,9 +19,9 @@ public class FileHandlerTest {
         Integer quantity	  = 1;
 
         assertTrue( processor.getShoppingBasket().getBasketOfItems().size() == 4 );
-        assertEquals( "bottle of perfume", itemAtIndexOfOne.name );
-        assertEquals( quantity, itemAtIndexOfOne.quantity );
-        assertTrue( 18.99 == itemAtIndexOfOne.price );
+        assertEquals( "bottle of perfume", itemAtIndexOfOne.getName());
+        assertEquals( quantity, itemAtIndexOfOne.getQuantity());
+        assertTrue( 18.99 == itemAtIndexOfOne.getPrice());
         assertFalse( processor.getShoppingBasket().getBasketOfItems().get(0) == processor.getShoppingBasket().getBasketOfItems().get(3) );
     }
 

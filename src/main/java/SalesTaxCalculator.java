@@ -5,7 +5,7 @@ public class SalesTaxCalculator {
     public static void calculate(ShoppingBasket shoppingBasket) {
         for (Item item : shoppingBasket.getBasketOfItems()) {
             calculateItemTaxesAndTotal(item);
-            calculateBasketTaxesAndTotal(shoppingBasket, item.salesTax, item.total);
+            calculateBasketTaxesAndTotal(shoppingBasket, item.getSalesTax(), item.getTotal());
         }
     }
 
@@ -20,22 +20,22 @@ public class SalesTaxCalculator {
     private static void calculateItemTaxesAndTotal(Item item) {
         determineItemBasicSalesTax(item);
         determineItemImportDuty(item);
-        item.total += item.salesTax;
+        item.setTotal(item.getTotal() + item.getSalesTax());
     }
 
 
-    public static Double determineItemBasicSalesTax(Item item) {
-        if (!item.exemptionStatus) {
-            item.salesTax += (BASICSALESTAX * item.price);
+    public static void determineItemBasicSalesTax(Item item) {
+        if (!item.isExemptStatus()) {
+            item.setSalesTax(item.getSalesTax() + (BASICSALESTAX * item.getPrice()));
         }
-        return item.salesTax = roundUpSalesTax(item.salesTax);
+        item.setSalesTax(roundUpSalesTax(item.getSalesTax()));
     }
 
-    public static Double determineItemImportDuty(Item item) {
-        if (item.importStatus) {
-            item.salesTax += (IMPORTDUTY * item.price);
+    public static void determineItemImportDuty(Item item) {
+        if (item.isImportStatus()) {
+            item.setSalesTax(item.getSalesTax() + (IMPORTDUTY * item.getPrice()));
         }
-        return item.salesTax = roundUpSalesTax(item.salesTax);
+        item.setSalesTax(roundUpSalesTax(item.getSalesTax()));
     }
 
     public static Double roundUpSalesTax(Double determinedSalesTax) {

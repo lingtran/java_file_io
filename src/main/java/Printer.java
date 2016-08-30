@@ -64,7 +64,7 @@ public class Printer {
 
     public void formatItemsLines(ArrayList<Item> items) {
         for (Item item : items) {
-            content.add(String.format("%d %s: %.2f", item.quantity, item.name, item.total));
+            content.add(String.format("%d %s: %.2f", item.getQuantity(), item.getName(), item.getTotal()));
         }
     }
 
