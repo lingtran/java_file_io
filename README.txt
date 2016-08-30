@@ -13,7 +13,7 @@ RUN APP
 * Example:
 	$ java -cp src/main/java Application src/test/resources/input_one.txt
 
-* NOTE: Receipt output will be found in the 'sales_taxes_java/receipts' directory
+* NOTE: Receipt output will be found in the 'receipts' directory
 
 RUN TESTS
 * Enter command: 
