@@ -52,7 +52,7 @@ public class Printer {
     }
 
     public void gatherContentOf(ShoppingBasket shoppingBasket) {
-        formatItemsLines(shoppingBasket.basketOfItems);
+        formatItemsLines(shoppingBasket.getBasketOfItems());
         formatSummaryLines(shoppingBasket);
     }
 
@@ -64,13 +64,13 @@ public class Printer {
 
     public void formatItemsLines(ArrayList<Item> items) {
         for (Item item : items) {
-            content.add(String.format("%d %s: %.2f", item.quantity, item.name, item.total));
+            content.add(String.format("%d %s: %.2f", item.getQuantity(), item.getName(), item.getTotal()));
         }
     }
 
     public void formatSummaryLines(ShoppingBasket basket) {
-        content.add(String.format("Sales Taxes: %.2f", basket.salesTaxes));
-        content.add(String.format("Total: %.2f", basket.total));
+        content.add(String.format("Sales Taxes: %.2f", basket.getSalesTaxes()));
+        content.add(String.format("Total: %.2f", basket.getTotal()));
     }
 
     private void writeLines() throws IOException {

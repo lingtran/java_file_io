@@ -15,8 +15,8 @@ public class ProcessorTest {
     @Test
     public void testProcessorConstructor() {
         Processor test                = new Processor();
-        ShoppingBasket testBasket 	  = test.shoppingBasket;
-        ArrayList<Item> testItems 	  = test.items;
+        ShoppingBasket testBasket 	  = test.getShoppingBasket();
+        ArrayList<Item> testItems 	  = testBasket.getBasketOfItems();
         ShoppingBasket shoppingBasket = new ShoppingBasket();
 
         assertThat( testBasket, instanceOf(shoppingBasket.getClass()) );
@@ -26,6 +26,7 @@ public class ProcessorTest {
     @Test
     public void testAddItemToBasket() {
         Processor test = new Processor();
+        ShoppingBasket testBasket = test.getShoppingBasket();
         Item itemOne   = new Item( "1", "imported box of chocolates", "10.00" );
         Item itemTwo   = new Item( "1", "strawberries", "5.00" );
 
@@ -33,20 +34,19 @@ public class ProcessorTest {
         testItems.add(itemOne);
         testItems.add(itemTwo);
 
-        assertEquals( 0, test.items.size() );
+        assertEquals( 0, testBasket.getBasketOfItems().size() );
 
         test.addItemToBasket(itemOne);
 
-        assertEquals( 1, test.items.size() );
-        assertTrue( test.items.contains(itemOne) );
-        assertFalse( test.items.contains(itemTwo) );
+        assertEquals( 1, testBasket.getBasketOfItems().size() );
+        assertTrue( testBasket.getBasketOfItems().contains(itemOne) );
+        assertFalse( testBasket.getBasketOfItems().contains(itemTwo) );
 
         test.addItemToBasket(itemTwo);
 
-        assertEquals( 2, test.items.size());
-        assertTrue( test.items.containsAll(testItems) );
-        assertFalse( test.items.get(1).name.equals(itemOne.name) );
-        assertTrue( test.shoppingBasket.basketOfItems == test.items );
+        assertEquals( 2, testBasket.getBasketOfItems().size());
+        assertTrue( testBasket.getBasketOfItems().containsAll(testItems) );
+        assertFalse( testBasket.getBasketOfItems().get(1).getName().equals(itemOne.getName()) );
     }
 
     @Test
@@ -64,11 +64,11 @@ public class ProcessorTest {
         test.addItemToBasket(itemTwo);
         test.callSalesTaxCalculator();
 
-        assertEquals( itemOneSalesTax, itemOne.salesTax );
-        assertEquals( itemOneTotal, itemOne.total );
-        assertEquals( itemTwoSalesTax, itemTwo.salesTax );
-        assertEquals( shoppingBasketSalesTaxes, test.shoppingBasket.salesTaxes );
-        assertEquals( shoppingBasketTotal, test.shoppingBasket.total );
+        assertEquals( itemOneSalesTax, itemOne.getSalesTax());
+        assertEquals( itemOneTotal, itemOne.getTotal());
+        assertEquals( itemTwoSalesTax, itemTwo.getSalesTax());
+        assertEquals( shoppingBasketSalesTaxes, test.getShoppingBasket().getSalesTaxes() );
+        assertEquals( shoppingBasketTotal, test.getShoppingBasket().getTotal() );
     }
 
     @Test

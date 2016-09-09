@@ -12,7 +12,7 @@ public class PrinterTest {
     @Test
     public void testFormatItemsLines() throws IOException {
         Processor processor	  = new Processor();
-        ArrayList<Item> items = processor.items;
+        ArrayList<Item> items = processor.getShoppingBasket().getBasketOfItems();
         Item book			  = new Item("1", "book", "12.49");
         Item cd				  = new Item("1", "music CD", "14.99");
         Item choco			  = new Item("1", "chocolate bar", "0.85");
@@ -34,7 +34,7 @@ public class PrinterTest {
     @Test
     public void testFormatSummaryLines() throws IOException {
         Processor processor	  = new Processor();
-        ShoppingBasket basket = processor.shoppingBasket;
+        ShoppingBasket basket = processor.getShoppingBasket();
         Item book			  = new Item("1", "book", "12.49");
         Item cd				  = new Item("1", "music CD", "14.99");
         Item choco			  = new Item("1", "chocolate bar", "0.85");
@@ -56,7 +56,7 @@ public class PrinterTest {
     @Test
     public void testGatherContentOf() throws IOException {
         Processor processor	  = new Processor();
-        ShoppingBasket basket = processor.shoppingBasket;
+        ShoppingBasket basket = processor.getShoppingBasket();
         Item book			  = new Item("1", "book", "12.49");
         Item cd				  = new Item("1", "music CD", "14.99");
         Item choco			  = new Item("1", "chocolate bar", "0.85");
@@ -78,7 +78,7 @@ public class PrinterTest {
     @Test
     public void testWriteReceiptFor() throws IOException {
         Processor processor	  = new Processor();
-        ShoppingBasket basket = processor.shoppingBasket;
+        ShoppingBasket basket = processor.getShoppingBasket();
         Item book			  = new Item("1", "book", "12.49");
         Item cd				  = new Item("1", "music CD", "14.99");
         Item choco			  = new Item("1", "chocolate bar", "0.85");

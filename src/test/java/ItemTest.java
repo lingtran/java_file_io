@@ -17,11 +17,11 @@ public class ItemTest {
 
         Item test = new Item( inputQuantity, inputName, inputPrice );
 
-        assertEquals( quantity, test.quantity );
-        assertEquals( "perfume", test.name );
-        assertEquals( price, test.price );
-        assertFalse( test.exemptionStatus );
-        assertFalse( test.importStatus );
+        assertEquals( quantity, test.getQuantity());
+        assertEquals( "perfume", test.getName());
+        assertEquals( price, test.getPrice());
+        assertFalse( test.isExemptStatus() );
+        assertFalse( test.isImportStatus() );
     }
 
     @Test
@@ -55,10 +55,10 @@ public class ItemTest {
         testThree.determineIfExempt();
         testFour.determineIfExempt();
 
-        boolean itemOneQualifiedExemptionStatus 	= test.exemptionStatus;
-        boolean itemTwoQualifiedExemptionStatus		= testTwo.exemptionStatus;
-        boolean itemThreeUnqualifiedExemptionStatus = testThree.exemptionStatus;
-        boolean itemFourQualifiedExemptionStatus 	= testFour.exemptionStatus;
+        boolean itemOneQualifiedExemptionStatus 	= test.isExemptStatus();
+        boolean itemTwoQualifiedExemptionStatus		= testTwo.isExemptStatus();
+        boolean itemThreeUnqualifiedExemptionStatus = testThree.isExemptStatus();
+        boolean itemFourQualifiedExemptionStatus 	= testFour.isExemptStatus();
 
         assertTrue( itemOneQualifiedExemptionStatus );
         assertTrue( itemTwoQualifiedExemptionStatus );
@@ -73,8 +73,8 @@ public class ItemTest {
         test.determineIfExempt();
         test.determineIfImported();
 
-        boolean itemQualifiedExemptionStatus = test.exemptionStatus;
-        boolean itemQualifiedImportStatus	 = test.importStatus;
+        boolean itemQualifiedExemptionStatus = test.isExemptStatus();
+        boolean itemQualifiedImportStatus	 = test.isImportStatus();
 
         assertTrue( itemQualifiedExemptionStatus );
         assertTrue( itemQualifiedImportStatus );
